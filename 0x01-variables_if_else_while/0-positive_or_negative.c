@@ -6,7 +6,6 @@
  * main - print random num if positive, zero, or negative
  *
  * Return: 0
- * '
  */
 int main(void)
 {
