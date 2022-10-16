@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * main - Prints the last digit of num if is greater than 5, less than 6, or zero
+ * main - Prints las digit of random num
  *
  * Return: ALways 0
  */
