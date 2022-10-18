@@ -8,10 +8,7 @@
  */
 int print_last_digit(int n)
 {
-	int n;
 	int i;
-
-	n = random num;
 	i = n % 10;
 	
 	if (i > 0)
