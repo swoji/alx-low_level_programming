@@ -6,10 +6,17 @@
  *
  * Return: Value of the last digit.
  */
-int print_last_digit(int)
+int print_last_digit(int n)
 {
-	if (n < 0)
-		n = -n;
+	int n;
+	int i;
+
+	n = random num;
+	i = n % 10;
+	
+	if (i > 0)
+	
 	_putchar((n % 10) + '0');
+
 	return (n % 10);
 }
