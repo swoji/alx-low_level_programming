@@ -1,4 +1,4 @@
-# 0x07. C - Recursion
+# 0x08. C - Recursion
 ## About
 An introductory project on:
 - recursion, and how to use it
