@@ -37,8 +37,6 @@ An introductory project on:
 
 **[9-print_comb.c](9-print_comb.c)** - prints all single-digit numbers, separated by a comma, using `putchar`, without using a variable of type `char`.
 
-**[10-print_comb2.c](10-print_comb2.c)** - prints the numbers from 00 to 99, separated by a comma, using `putchar`, without using a variable of type `char`.
-
 ### Advanced
 **[100-print_comb3.c](100-print_comb3.c)** - prints all possible different combinations of two digits, separated by a comma, using `putchar`, without using a variable of type `char`.
 
