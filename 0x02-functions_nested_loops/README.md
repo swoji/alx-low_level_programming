@@ -14,7 +14,7 @@ An introductory project on:
 - allowed to use [ _putchar ]( https://github.com/holbertonschool/_putchar.c/blob/master/_putchar.c )
 ## File Descriptions
 ### Mandatory
-**[0-holberton.c](0-holberton.c)** - prints Holberton, followed by a new line.
+**[0-putchar.c](0-putchar.c)** - prints Putchar, followed by a new line.
 
 **[1-alphabet.c](1-alphabet.c)** - function that prints the alphabet, in lowercase, followed by a new line.
 
