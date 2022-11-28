@@ -10,13 +10,13 @@
 size_t print_list(const list_t *h)
 {
 	unsigned int i;
-	const list_t *tmp = NULL;
+	const list_t *tmp;
 
 	i = 0;
 	tmp = h;
 	while (tmp != NULL)
 	{
-		if (tmp->str ==  NULL)
+		if (tmp->str == NULL)
 		{
 			printf("[0] (nil)\n");
 		}
