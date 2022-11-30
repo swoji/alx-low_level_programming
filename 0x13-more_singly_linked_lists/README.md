@@ -1,6 +1,6 @@
 # 0x13. C - More singly linked lists
 ## About
-Holberton School's follow-up project on singly linked lists
+ALX Software Engineering Programme follow-up project on singly linked lists
 ## Requirements
 - Ubuntu 20.04 LTS
 - gcc 12.2.0
