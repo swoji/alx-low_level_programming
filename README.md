@@ -42,3 +42,6 @@ This repository contains projects on the C programming language. The projects co
 15. [0x0E-structures_typedef](./0x0E-structures_typedef)
 16. [0x0F-function_pointers](./0x0F-function_pointers)
 17. [0x10-variadic_functions](./0x10-variadic_functions)
+18. [0x11-printf](https://github.com/swoji/printf) ** printf project **
+19. [0x12-singly_linked_lists](./0x12-singly_linked_lists)
+20. [0x13-more_singly_linked_lists](./0x13-more_singly_linked_lists)
