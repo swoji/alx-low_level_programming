@@ -45,3 +45,4 @@ This repository contains projects on the C programming language. The projects co
 18. [0x11-printf](https://github.com/swoji/printf) ** printf project **
 19. [0x12-singly_linked_lists](./0x12-singly_linked_lists)
 20. [0x13-more_singly_linked_lists](./0x13-more_singly_linked_lists)
+21. [0x14-bit_manipulation](./0x14-bit_manipulation)
