@@ -1,117 +1,112 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <fcntl.h>
 #include <sys/types.h>
-
-#define ELF_MAGIC 0x464c457f
-#define ELF_CLASS_32 0x1
-#define ELF_CLASS_64 0x2
-#define ELF_DATA_LSB 0x1
-#define ELF_DATA_MSB 0x2
-#define ELF_VERSION 0x1
+#include <sys/stat.h>
+#include <fcntl.h>
 
 /**
- * main - display information contained in ELF file header
- * @argc: number of arguments
- * @argv: array of string arguments
- *
- * Return: EXIT_SUCCESS on success, otherwise 98 on error
- */
-typedef struct 
+  * struct elf_header - Struct of elf_header
+  *
+  * @magic: Magic number
+  * @class: Class of the ELF
+  * @data: Data encoding
+  * @version: ELF Version
+  * @os_abi: OS/ABI identification
+  * @abi_version: ABI Version
+  * @type: Type of file
+  * @entry_point: Entry point address
+  */
+
+typedef struct elf_header
 {
-    char magic[4];
-    char class;
-    char data;
-    char version;
-    char os_abi;
-    char abi_version;
-    char type[2];
-    char entry_point[4];
-} 
-Elf_hdr;
+	unsigned int magic;
+	unsigned char class;
+	unsigned char data;
+	unsigned char version;
+	unsigned char os_abi;
+	unsigned char abi_version;
+	unsigned short int type;
+	unsigned int entry_point;
+} elf_header_t;
 
-void print_error(char *message);
+/**
+  * check_file - checks if the file is an ELF file
+  * @filename: The name of the file
+  *
+  * Return: 1 if it is an ELF file, else 0
+  */
 
-int main(int argc, char **argv) 
+int check_file(const char *filename)
 {
-    if (argc != 2) {
-        print_error("Usage: elf_header elf_filename\n");
-    }
+	int fd;
+	char buffer[4];
 
-    // Open file
-    int fd = open(argv[1], O_RDONLY);
-    if (fd == -1) {
-        print_error("Error: could not open file.\n");
-    }
-
-    // Read ELF header
-    Elf_hdr elf_hdr;
-    if (read(fd, &elf_hdr, sizeof(Elf_hdr)) != sizeof(Elf_hdr)) {
-        print_error("Error: could not read ELF header.\n");
-    }
-
-    // Check for ELF magic number
-    int magic = 0;
-    for (int i = 0; i < 4; i++) {
-        magic = (magic << 8) | elf_hdr.magic[i];
-    }
-    if (magic != ELF_MAGIC) {
-        print_error("Error: not an ELF file.\n");
-    }
-
-    // Print ELF header
-    printf("ELF Header\n");
-    printf("Magic: \t\t\t");
-    for (int i = 0; i < 4; i++) {
-        printf("%02x ", elf_hdr.magic[i]);
-    }
-    printf("\n");
-    printf("Class: \t\t\t");
-    if (elf_hdr.class == ELF_CLASS_32) {
-        printf("ELF32\n");
-    } else if (elf_hdr.class == ELF_CLASS_64) {
-        printf("ELF64\n");
-    } else {
-        print_error("Error: invalid class.\n");
-    }
-    printf("Data: \t\t\t");
-    if (elf_hdr.data == ELF_DATA_LSB) {
-        printf("2's complement, little endian\n");
-    } else if (elf_hdr.data == ELF_DATA_MSB) {
-        printf("2's complement, big endian\n");
-    } else {
-        print_error("Error: invalid data encoding.\n");
-    }
-    printf("Version: \t\t");
-    if (elf_hdr.version == ELF_VERSION) {
-        printf("1 (current)\n");
-    } else {
-        print_error("Error: invalid version.\n");
-    }
-    printf("OS/ABI: \t\t");
-    printf("UNIX - System V\n");
-    printf("ABI Version: \t\t");
-    printf("0\n");
-    printf("Type: \t\t\t");
-    if (elf_hdr.type[0] == 0x1 && elf_hdr.type[1] == 0x2) {
-        printf("EXEC (Executable file)\n");
-    } else {
-        print_error("Error: invalid type.\n");
-    }
-    printf("Entry point address: \t");
-    int entry_point = 0;
-    for (int i = 0; i < 4; i++) {
-        entry_point = (entry_point << 8) | elf_hdr.entry_point[i];
-    }
-    printf("0x%x\n", entry_point);
-
-    return 0;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	read(fd, buffer, 4);
+	close(fd);
+	if (buffer[0] != 0x7f && buffer[1] != 'E'
+	    && buffer[2] != 'L' && buffer[3] != 'F')
+		return (0);
+	return (1);
 }
 
-void print_error(char *message) 
+/**
+  * print_header - prints the ELF header information
+  * @filename: The name of the file
+  *
+  * Return: 0 on success, else 1
+  */
+
+int print_header(const char *filename)
 {
-    fprintf(stderr, "%s", message);
-    exit(98);
+	int fd;
+	elf_header_t elf_header;
+
+	if (check_file(filename) == 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+		exit(98);
+	}
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	read(fd, &elf_header, sizeof(elf_header_t));
+	printf("ELF Header:\n");
+	printf("  Magic:   ");
+	for (int i = 0; i < 16; i++)
+		printf("%02x ", ((unsigned char *)&elf_header.magic)[i]);
+	printf("\n");
+	printf("  Class:                             %c\n", elf_header.class);
+	printf("  Data:                              %c\n", elf_header.data);
+	printf("  Version:                           %x\n", elf_header.version);
+	printf("  OS/ABI:                            %x\n", elf_header.os_abi);
+	printf("  ABI Version:                       %x\n", elf_header.abi_version);
+	printf("  Type:                              %hx\n", elf_header.type);
+	printf("  Entry point address:               %x\n", elf_header.entry_point);
+
+	close(fd);
+	return (0);
+}
+
+/**
+  * main - prints the ELF header information
+  * @argc: The number of command line arguments
+  * @argv: The array of command line arguments
+  *
+  * Return: 0 on success, else 1
+  */
+
+int main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
+		dprintf(STDERR_FILENO, "Error: Wrong number of arguments\n");
+		exit(98);
+	}
+	if (print_header(argv[1]))
+		return (1);
+	return (0);
 }
