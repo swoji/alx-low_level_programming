@@ -13,12 +13,14 @@
 #define ELF_VERSION 0x1
 
 /**
- * check_elf - Checks if a file is an ELF file.
- * @e_ident: A pointer to an array containing the ELF magic numbers.
+ * main - display information contained in ELF file header
+ * @argc: number of arguments
+ * @argv: array of string arguments
  *
- * Description: If the file is not an ELF file - exit code 98.
+ * Return: EXIT_SUCCESS on success, otherwise 98 on error
  */
-typedef struct {
+typedef struct 
+{
     char magic[4];
     char class;
     char data;
@@ -27,11 +29,13 @@ typedef struct {
     char abi_version;
     char type[2];
     char entry_point[4];
-} Elf_hdr;
+} 
+Elf_hdr;
 
 void print_error(char *message);
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
     if (argc != 2) {
         print_error("Usage: elf_header elf_filename\n");
     }
@@ -106,7 +110,8 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-void print_error(char *message) {
+void print_error(char *message) 
+{
     fprintf(stderr, "%s", message);
     exit(98);
 }
