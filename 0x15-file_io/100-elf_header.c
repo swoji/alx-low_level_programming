@@ -75,17 +75,17 @@ int print_header(const char *filename)
 		return (1);
 	read(fd, &elf_header, sizeof(elf_header_t));
 	printf("ELF Header:\n");
-	printf("  Magic:   ");
+	printf("Magic:");
 	for (int i = 0; i < 16; i++)
 		printf("%02x ", ((unsigned char *)&elf_header.magic)[i]);
 	printf("\n");
-	printf("  Class:                             %c\n", elf_header.class);
-	printf("  Data:                              %c\n", elf_header.data);
-	printf("  Version:                           %x\n", elf_header.version);
-	printf("  OS/ABI:                            %x\n", elf_header.os_abi);
-	printf("  ABI Version:                       %x\n", elf_header.abi_version);
-	printf("  Type:                              %hx\n", elf_header.type);
-	printf("  Entry point address:               %x\n", elf_header.entry_point);
+	printf("Class:%c\n", elf_header.class);
+	printf("Data:%c\n", elf_header.data);
+	printf("Version:%x\n", elf_header.version);
+	printf("OS/ABI:%x\n", elf_header.os_abi);
+	printf("ABI Version:%x\n", elf_header.abi_version);
+	printf("Type:%hx\n", elf_header.type);
+	printf("Entry point address:%x\n", elf_header.entry_point);
 
 	close(fd);
 	return (0);
