@@ -48,3 +48,4 @@ This repository contains projects on the C programming language. The projects co
 21. [0x14-bit_manipulation](./0x14-bit_manipulation)
 22. [0x15-file_io](./0x15-file_io)
 23. [0x16-simple_shell](https://github.com/Neemma/simple_shell) ** simple shell project **
+24. [0x17-doubly_linked_lists](./0x17-doubly_linked_lists)
