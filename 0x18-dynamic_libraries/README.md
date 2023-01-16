@@ -36,6 +36,7 @@ them and how to use them with `$LD_LIBRARY_PATH`, `nm`, `ldd`, and `ldconfig`.
   * [1-create_dynamic_lib.sh](./1-create_dynamic_lib.sh): Bash script that creates a
   dynamic library called `liball.so` from all the `.c` files in the current directory.
 
+### Advanced
 **2. Let's call C functions from Python**
   * [100-operations.so](./100-operations.so): C dynamic library containing basic C
   mathematical operation functions that can be called from Python.
