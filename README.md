@@ -49,3 +49,5 @@ This repository contains projects on the C programming language. The projects co
 22. [0x15-file_io](./0x15-file_io)
 23. [0x16-simple_shell](https://github.com/Neemma/simple_shell) ** simple shell project **
 24. [0x17-doubly_linked_lists](./0x17-doubly_linked_lists)
+25. [0x18-dynamic_libraries](./0x18-dynamic_libraries)
+26. [monty](https://github.com/swoji/alx-low_level_programming/tree/main/monty)
