@@ -51,3 +51,6 @@ This repository contains projects on the C programming language. The projects co
 24. [0x17-doubly_linked_lists](./0x17-doubly_linked_lists)
 25. [0x18-dynamic_libraries](./0x18-dynamic_libraries)
 26. [monty](https://github.com/swoji/monty)
+27. [simple_shell](./simple_shell)
+28. [0x1A-hash_tables](./0x1A-hash_tables)
+29. [sorting_algorithms](./sorting_algorithms)
