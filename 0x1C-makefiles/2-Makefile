@@ -6,4 +6,3 @@ OBJ = $(SRC:%.c=%.o)
 		$(CC) -c -o $@ $<
 all: $(OBJ)
 		$(CC) $(OBJ) -o $(NAME)
-
