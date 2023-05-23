@@ -53,3 +53,4 @@ This repository contains projects on the C programming language. The projects co
 26. [monty](https://github.com/swoji/monty)
 27. [0x1A-hash_tables](./0x1A-hash_tables)
 28. [0x1C-makefiles](./0x1C-makefiles)
+29. [0x1E-search_algorithms](./0x1E-search_algorithms)
